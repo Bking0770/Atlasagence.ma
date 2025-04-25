@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Air Maroc - Accueil</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #f4f4f4, #e8e8e8);
+    }
+    header {
+      background-color: #b41c1c;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .hero {
+      background-image: url('https://www.royalairmaroc.com/themes/custom/ram/images/bg-home.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2.5em;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    }
+    .booking-form {
+      background-color: white;
+      max-width: 800px;
+      margin: -40px auto 40px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .booking-form h2 {
+      text-align: center;
+      color: #b41c1c;
+    }
+    .booking-form input, .booking-form select, .booking-form button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    .booking-form button {
+      background-color: #b41c1c;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .booking-form button:hover {
+      background-color: #991616;
+    }
+    .confirmation {
+      background-color: #d4edda;
+      border: 1px solid #28a745;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      color: #155724;
+      font-weight: bold;
+      display: none;
+    }
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Royal Air Maroc</h1>
+    <nav>
+      <a href="#">Vols</a>
+      <a href="#">Destinations</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    Réservez votre prochain vol
+  </div>
+
+  <div class="booking-form">
+    <h2>Réservation de vol</h2>
+    <input type="text" id="nom" placeholder="Nom du passager">
+    <input type="text" id="numReservation" placeholder="Numéro de réservation">
+    <input type="text" id="depart" placeholder="Ville de départ" value="Casablanca">
+    <input type="text" id="arrivee" placeholder="Ville d'arrivée" value="Bamako">
+    <input type="date" id="date" value="2025-06-25">
+    <input type="date" id="retour" value="2025-09-25">
+    <select id="classe">
+      <option>Classe économique</option>
+      <option>Classe business</option>
+    </select>
+    <select id="passagers">
+      <option>1 Passager</option>
+      <option>2 Passagers</option>
+      <option>3 Passagers</option>
+    </select>
+    <button onclick="confirmerReservation()">Confirmer la réservation</button>
+
+    <div class="confirmation" id="confirmationReservation"></div>
+  </div>
+
+  <footer>
+    &copy; 2025 Royal Air Maroc - Tous droits réservés
+  </footer>
+
+  <script>
+    function confirmerReservation() {
+      const nom = document.getElementById('nom').value;
+      const numReservation = document.getElementById('numReservation').value;
+      const depart = document.getElementById('depart').value;
+      const arrivee = document.getElementById('arrivee').value;
+      const date = document.getElementById('date').value;
+      const retour = document.getElementById('retour').value;
+      const classe = document.getElementById('classe').value;
+      const passagers = document.getElementById('passagers').value;
+
+      if (!nom || !numReservation || !depart || !arrivee || !date || !retour) {
+        alert('Veuillez remplir tous les champs.');
+        return;
+      }
+
+      const confirmation = document.getElementById('confirmationReservation');
+      confirmation.innerHTML = `
+        <p><strong>Nom du passager :</strong> ${nom}</p>
+        <p><strong>Numéro de réservation :</strong> ${numReservation}</p>
+        <p><strong>Départ :</strong> ${depart}</p>
+        <p><strong>Arrivée :</strong> ${arrivee}</p>
+        <p><strong>Date aller :</strong> ${date}</p>
+        <p><strong>Date retour :</strong> ${retour}</p>
+        <p><strong>Classe :</strong> ${classe}</p>
+        <p><strong>Passagers :</strong> ${passagers}</p>
+        <p><strong>Votre réservation a été confirmée !</strong></p>
+      `;
+      confirmation.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
